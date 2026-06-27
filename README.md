@@ -1,74 +1,128 @@
-# Math Warm-Up — TAE Inteligencia Artificial
-## Modulo 4: Deep Learning
-# Docente: German Pinedo-Diaz
+# Notebook 3.1 — Optimización I: Descenso por Gradiente
 
-Las actividades estan dividias por secciones:
+## Modelo
 
-# Actividades 1: 
+$$
+y(x) = \sin(z)\exp(-z^2/8), \qquad z = \phi_0 + 0.06\,\phi_1\, x
+$$
 
-1.1 — Math Warm-Up
+**Parámetros verdaderos:** $\phi_0 = 3.0$, $\phi_1 = 15.0$
 
-Funciones lineales y afines — diferencia entre g(x) = ωx (lineal pura) y f(x) = β + ωx (afín), y por qué en DL se les llama coloquialmente "lineales".
-Funciones no lineales — motivación para usar activaciones (ReLU, sigmoid, tanh): apilar capas puramente lineales sigue siendo lineal, las no linealidades crean las "curvas" que permiten modelar patrones complejos.
-Derivadas y gradientes — interpretación intuitiva como "brújula" de aprendizaje; el gradiente indica la dirección para ajustar parámetros y reducir la pérdida.
-Ejercicios prácticos — implementación de funciones lineales en NumPy con pruebas unitarias, visualización de campos de gradiente en 2D con matplotlib.
+**Actualización de parámetros:**
 
-1.2 — Regresión Lineal 1D
+$$
+\phi_{t+1} = \phi_t - \alpha \nabla_\phi L(\phi_t)
+$$
 
-Modelo lineal — implementación de f(x, φ₀, φ₁) = φ₀ + φ₁·x con intercept y pendiente.
-Función de pérdida — cálculo del error cuadrático (ecuación 2.5) para evaluar qué tan bien ajusta el modelo.
-Optimización manual — ajuste coordenada por coordenada de φ₀ y φ₁ para minimizar la pérdida (descenso de coordenadas).
-Visualización del espacio de pérdida — mapa de calor y curvas de nivel en 2D para comprender la superficie de optimización.
+---
 
-# Actividades 2
+## Experimentos
 
-2.1 — Redes Neuronales Superficiales (Shallow Neural Networks)_ Construcción e interpretación de redes de una sola capa oculta:
+### Experimento 1 — Caso base
 
-Activación ReLU — implementación y visualización de la función de activación rectificada.
-Red 1-entrada / 3-neuronas / 1-salida — cálculo manual de preactivaciones, activaciones y salida final con parámetros θ y φ.
-Regiones lineales — análisis de cuántos politopos lineales genera el modelo (7 regiones con 3 unidades ReLU en 2D).
-Ajuste a datos — uso de la pérdida de mínimos cuadrados para entrenar la red; exploración del espacio de parámetros.
-Múltiples salidas — extensión a dos salidas visualizadas con mapas de calor separados.
+```python
+phi = np.array([-2.0, 5.0])
+lr = 8.0
+n_steps = 120
+```
 
-2.2 — Composición de Redes Neuronales_ Apilamiento de dos redes independientes como bloque modular:
+| Pérdida inicial | Pérdida final |
+|---|---|
+| 0.14262 | 0.14262 |
 
-Composición funcional — la salida de la red 1 se alimenta como entrada a la red 2, construyendo representaciones más ricas.
-Visualización end-to-end — trazado de la función compuesta en el rango [-1, 1].
+**Observación:** El punto de inicio queda lejos del mínimo global. Con 120 pasos y α=8, el modelo apenas empieza a desplazarse. La curva naranja no se ajusta bien a los datos — el descenso es visible en el contorno pero insuficiente para converger.
 
-2.3 — Redes Neuronales Profundas (Deep Neural Networks)_ Extensión a múltiples capas ocultas usando álgebra matricial:
+---
 
-Formulación matricial — reimplementación de la red usando multiplicaciones de matrices (ecuación 4.15).
-Red profunda 3 capas — arquitectura 4→5→2→4→1; propagación hacia adelante completa.
-Concatenación de redes — alimentar la salida de una red como entrada de otra para construir profundidad.
+### Experimento 2 — Tasa de aprendizaje muy pequeña (α = 0.5)
 
-2.4.1 — Función de Pérdida I: Regresión Univariada
-Análisis de criterios de optimización para regresión:
+```python
+phi = np.array([-2.0, 5.0])
+lr = 0.5
+n_steps = 120
+```
 
-Likelihood y log-likelihood negativa — cálculo e interpretación; comparación con mínimos cuadrados.
-Distribución gaussiana — efecto de μ y σ sobre el ajuste del modelo.
-Descenso por coordenadas — variación de un parámetro a la vez (beta_1, sigma) para observar la superficie de pérdida.
+| Pérdida inicial | Pérdida final |
+|---|---|
+| 0.14262 | 0.14173 |
 
-2.4.2 — Función de Pérdida II: Clasificación Binaria
-Criterios de optimización para clasificación de dos clases:
+**Observación:** La pérdida apenas disminuyó. El punto naranja prácticamente no se movió del punto inicial en el contorno. Con α tan pequeño, los pasos son demasiado cortos — se necesitarían miles de iteraciones para alcanzar el mínimo. Convergencia **extremadamente lenta**.
 
-Función sigmoide — transformación de la salida de la red al rango [0, 1] para representar probabilidades.
-Binary cross-entropy — cálculo de likelihood y log-likelihood negativa para datos binarios.
-Análisis de parámetros — efecto de beta_1 sobre ambas métricas; motivación práctica de la log-likelihood.
+---
 
-2.4.3 — Tarea: Función de Pérdida III: Clasificación Multiclase
-Extensión a K clases con softmax y entropía cruzada:
+### Experimento 3 — Tasa de aprendizaje muy grande (α = 15)
 
-Función softmax — normalización de K salidas arbitrarias a probabilidades válidas (no negativas, suma 1).
-Multiclass cross-entropy — likelihood y log-likelihood negativa para 3 clases (rojo, verde, azul).
-Optimización de red completa — exploración de los 16 parámetros β₀, Ω₀, β₁, Ω₁ que minimizan la pérdida.
+```python
+phi = np.array([-2.0, 5.0])
+lr = 15.0
+n_steps = 150
+```
 
-# Actividades 3
+| Pérdida inicial | Pérdida final |
+|---|---|
+| 0.14262 | 0.14884 |
 
+**Observación:** La pérdida **aumentó** respecto al punto de inicio. El gradiente da pasos demasiado grandes y el algoritmo salta por encima del mínimo, moviéndose en dirección incorrecta. Comportamiento de **divergencia**.
 
-# Actividades 4 
+---
 
+### Experimento 4 — Tasa de aprendizaje negativa (α = −0.5)
 
-## Autor
-#Dr. Juan Navarrete Guzman
-#TAE Inteligencia Artificial — Modulo 4: Deep Learning
-#CINVESTAV
+```python
+phi = np.array([-2.0, 5.0])
+lr = -0.5
+n_steps = 120
+```
+
+| Pérdida inicial | Pérdida final |
+|---|---|
+| 0.14262 | 0.14748 |
+
+**Observación:** Al usar α negativo, la actualización se convierte en un **ascenso por gradiente** — el algoritmo se aleja del mínimo en lugar de acercarse. La pérdida sube consistentemente. Esto ilustra por qué el signo de la tasa de aprendizaje es crítico.
+
+---
+
+### Experimento 5 — Mínimo local (α = 5, punto inicial alejado)
+
+```python
+phi = np.array([0.0, 10.0])
+lr = 5.0
+n_steps = 800
+```
+
+| Pérdida inicial | Pérdida final |
+|---|---|
+| 0.14262 | 0.12908 |
+
+**Observación:** La pérdida disminuye pero el algoritmo queda **atrapado en un mínimo local**. Aunque se ejecutaron 800 pasos, el punto no logra alcanzar el mínimo global en φ₀=3, φ₁=15. Esto demuestra que el descenso por gradiente es sensible al punto de inicio — desde ciertas regiones del espacio de parámetros, el gradiente dirige hacia soluciones subóptimas.
+
+---
+
+### Experimento 6 — Convergencia exitosa ✓
+
+```python
+phi = np.array([1.0, 12.0])
+lr = 3.0
+n_steps = 500
+```
+
+| Pérdida inicial | Pérdida final | φ₀ final | φ₁ final |
+|---|---|---|---|
+| 0.14262 | **0.00721** | 2.745 | 13.569 |
+
+**Observación:** Arrancando más cerca del mínimo global y con una tasa moderada, el algoritmo **converge exitosamente**. La curva naranja se superpone casi perfectamente con la curva verdadera (roja punteada). Los parámetros finales φ₀=2.745 y φ₁=13.569 son muy cercanos a los valores verdaderos φ₀=3 y φ₁=15. La trayectoria en el contorno muestra un descenso suave hacia la región de mínima pérdida.
+
+---
+
+## Conclusiones
+
+| Factor | Efecto observado |
+|---|---|
+| α demasiado pequeño (0.5) | Convergencia extremadamente lenta, casi sin movimiento |
+| α adecuado (3.0–8.0) | Descenso progresivo, converge con suficientes pasos |
+| α demasiado grande (15.0) | Divergencia — la pérdida aumenta |
+| α negativo (−0.5) | Ascenso por gradiente — se aleja del mínimo |
+| Punto inicial lejano | Riesgo de quedar atrapado en mínimo local |
+| Punto inicial cercano al mínimo | Convergencia exitosa con menos iteraciones |
+
+El descenso por gradiente es sensible tanto a la **tasa de aprendizaje** como al **punto de inicio**. Una α adecuada permite pasos suficientemente grandes para avanzar, pero sin sobrepasar el mínimo. La elección del punto inicial determina hacia qué mínimo converge el algoritmo en superficies de pérdida no convexas como la del modelo Gabor.
