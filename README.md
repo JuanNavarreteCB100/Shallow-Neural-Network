@@ -3,7 +3,7 @@
 # Docente: Dr. German Pinedo-Diaz
 
 
-Estos cuatro notebooks construyen, de forma progresiva, la arquitectura completa de una red neuronal moderna: desde la unidad más simple hasta el criterio que guía su aprendizaje.
+Estos seis notebooks construyen, de forma progresiva, la arquitectura completa de una red neuronal moderna: desde la unidad más simple hasta el criterio que guía su aprendizaje.
 
 El punto de partida en **2.1** fue entender qué hace realmente una neurona: aplica una transformación afín a la entrada y luego una función de activación (ReLU) que "dobla" el espacio. El resultado es una función lineal a trozos que, bien combinado, puede aproximar casi cualquier cosa.
 
