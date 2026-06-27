@@ -14,6 +14,7 @@ Los notebooks **2.4.1 al 2.4.3** responden la pregunta más importante: ¿cómo 
 
 **arquitectura + función de pérdida + optimización** son los tres pilares que definen cualquier red neuronal, sin importar su complejidad.
 
-
-## Autor Dr. Juan Navarrete Guzman 
-TAE Inteligencia Artificial — Modulo 4: Deep Learning CINVESTAV
+## Autor
+Dr. Juan Navarrete Guzman
+TAE Inteligencia Artificial — Modulo 4: Deep Learning
+CINVESTAV
