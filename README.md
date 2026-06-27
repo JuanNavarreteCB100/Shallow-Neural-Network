@@ -1,6 +1,6 @@
-# Actividades 4 — Optimización en Deep Learning
+## Actividades 4 — Optimización en Deep Learning
 ## Modulo 4: Deep Learning
-# Docente: Dr. German Pinedo-Diaz
+## Docente: Dr. German Pinedo-Diaz
 
 ### 4.1 Descenso por Gradiente
 Implementación del descenso por gradiente clásico sobre un modelo lineal simple. Se calcula la función de pérdida de suma de cuadrados, su gradiente analítico y se aplica una búsqueda lineal para elegir el tamaño de paso óptimo en cada iteración. Se visualiza la trayectoria sobre la superficie de pérdida.
@@ -19,6 +19,6 @@ Implementación de momentum estándar, que acumula una velocidad para suavizar l
 Implementación del optimizador Adam, que combina promedios móviles del gradiente y del gradiente cuadrado con corrección de sesgo para adaptar el tamaño de paso por parámetro. Se parte de gradientes normalizados como motivación y se muestra cómo Adam elimina las oscilaciones que estos producen cerca del mínimo.
 
 ## Autor
-#Dr. Juan Navarrete Guzman
-#TAE Inteligencia Artificial — Modulo 4: Deep Learning
-#CINVESTAV
+Dr. Juan Navarrete Guzman
+TAE Inteligencia Artificial — Modulo 4: Deep Learning
+CINVESTAV
