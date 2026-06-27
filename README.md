@@ -19,6 +19,6 @@ Implementación de momentum estándar, que acumula una velocidad para suavizar l
 Implementación del optimizador Adam, que combina promedios móviles del gradiente y del gradiente cuadrado con corrección de sesgo para adaptar el tamaño de paso por parámetro. Se parte de gradientes normalizados como motivación y se muestra cómo Adam elimina las oscilaciones que estos producen cerca del mínimo.
 
 ## Autor
-Dr. Juan Navarrete Guzman
+Dr. Juan Navarrete Guzmán
 TAE Inteligencia Artificial — Modulo 4: Deep Learning
 CINVESTAV
