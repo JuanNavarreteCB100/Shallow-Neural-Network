@@ -27,8 +27,8 @@ n_steps = 120
 ```
 
 | Pérdida inicial | Pérdida final |
-                  |---|---|
-                  | 0.14262 | 0.14262 |
+|---|---|
+| 0.14262 | 0.14262 |
 
 **Observación:** El punto de inicio queda lejos del mínimo global. Con 120 pasos y α=8, el modelo apenas empieza a desplazarse. La curva naranja no se ajusta bien a los datos — el descenso es visible en el contorno pero insuficiente para converger.
 
