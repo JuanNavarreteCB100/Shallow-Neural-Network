@@ -26,7 +26,7 @@ lr = 8.0
 n_steps = 120
 ```
 
-                  | Pérdida inicial | Pérdida final |
+| Pérdida inicial | Pérdida final |
                   |---|---|
                   | 0.14262 | 0.14262 |
 
