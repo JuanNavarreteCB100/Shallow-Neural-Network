@@ -1,7 +1,8 @@
 # Notebook 3.1 — Optimización I: Descenso por Gradiente
+## Modulo 4: Deep Learning
+# Docente: Dr. German Pinedo-Diaz
 
 ## Modelo
-
 $$
 y(x) = \sin(z)\exp(-z^2/8), \qquad z = \phi_0 + 0.06\,\phi_1\, x
 $$
@@ -17,7 +18,6 @@ $$
 ---
 
 ## Experimentos
-
 ### Experimento 1 — Caso base
 
 ```python
@@ -126,3 +126,8 @@ n_steps = 500
 | Punto inicial cercano al mínimo | Convergencia exitosa con menos iteraciones |
 
 El descenso por gradiente es sensible tanto a la **tasa de aprendizaje** como al **punto de inicio**. Una α adecuada permite pasos suficientemente grandes para avanzar, pero sin sobrepasar el mínimo. La elección del punto inicial determina hacia qué mínimo converge el algoritmo en superficies de pérdida no convexas como la del modelo Gabor.
+
+## Autor
+Dr. Juan Navarrete Guzman
+TAE Inteligencia Artificial — Modulo 4: Deep Learning
+CINVESTAV
