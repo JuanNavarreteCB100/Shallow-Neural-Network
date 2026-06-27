@@ -1,7 +1,6 @@
-# Notebooks 2.1 al 2.4.3 — Deep Learning
+## Notebooks 2.1 al 2.4.3 — Deep Learning
 ## Modulo 4: Deep Learning
-# Docente: Dr. German Pinedo-Diaz
-
+## Docente: Dr. German Pinedo-Diaz
 
 Estos seis notebooks construyen, de forma progresiva, la arquitectura completa de una red neuronal moderna: desde la unidad más simple hasta el criterio que guía su aprendizaje.
 
@@ -16,7 +15,5 @@ Los notebooks **2.4.1 al 2.4.3** responden la pregunta más importante: ¿cómo 
 **arquitectura + función de pérdida + optimización** son los tres pilares que definen cualquier red neuronal, sin importar su complejidad.
 
 
-## Autor
-Dr. Juan Navarrete Guzman
-TAE Inteligencia Artificial — Modulo 4: Deep Learning
-CINVESTAV
+## Autor Dr. Juan Navarrete Guzman 
+TAE Inteligencia Artificial — Modulo 4: Deep Learning CINVESTAV
